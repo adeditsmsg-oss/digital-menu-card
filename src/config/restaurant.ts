@@ -563,10 +563,15 @@ export const MENU_ITEMS: MenuItem[] = [
     name: "Hot Chocolate Brownie with Ice Cream",
     nameBn: "হট চকলেট ব্রাউনি সাথে আইসক্রিম",
     description: "Warm fudge brownie served with a scoop of vanilla ice cream and hot chocolate drizzle.",
-    descriptionBn: "গরম ফাজ ব্রাউনির সাথে এক স্কুপ ভ্যানিলা আইসক্রিম ও গরম চকলেটের প্রлеপ।",
+    descriptionBn: "গরম ফাজ ব্রাউনির সাথে এক স্কুপ ভ্যানিলা আইসক্রিম ও গরম চকলেটের প্রলেপ।",
     price: 110,
     category: "Desserts",
     image: "/images/haveli_milkshake.jpg",
     isPopular: true
   }
 ];
+
+export const getAssetUrl = (path: string): string => {
+  const isProd = process.env.NODE_ENV === "production";
+  return isProd ? `/haveli-cafe-website${path}` : path;
+};

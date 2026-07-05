@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Coffee, ChevronRight, Phone } from "lucide-react";
-import { RESTAURANT_CONFIG } from "@/config/restaurant";
+import { RESTAURANT_CONFIG, getAssetUrl } from "@/config/restaurant";
 
 interface HeroProps {
   isBn: boolean;
@@ -103,7 +103,7 @@ export default function Hero({ isBn }: HeroProps) {
             >
               {/* Main Image (Mural photo) */}
               <img
-                src="/images/haveli_interior_woman_mural.jpg"
+                src={getAssetUrl("/images/haveli_interior_woman_mural.jpg")}
                 alt="Haveli Cafe Signature Mural"
                 className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
               />
@@ -128,7 +128,7 @@ export default function Hero({ isBn }: HeroProps) {
             >
               <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0">
                 <img
-                  src="/images/haveli_milkshake.jpg"
+                  src={getAssetUrl("/images/haveli_milkshake.jpg")}
                   alt="Haveli Milkshake"
                   className="w-full h-full object-cover"
                 />

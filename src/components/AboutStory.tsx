@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Compass, Sparkles, ShieldCheck, Heart } from "lucide-react";
+import { getAssetUrl } from "@/config/restaurant";
 
 interface AboutStoryProps {
   isBn: boolean;
@@ -46,7 +47,7 @@ export default function AboutStory({ isBn }: AboutStoryProps) {
               className="col-span-12 rounded-3xl overflow-hidden aspect-[4/3] shadow-lg border border-border-color"
             >
               <img
-                src="/images/haveli_interior_grass.jpg"
+                src={getAssetUrl("/images/haveli_interior_grass.jpg")}
                 alt="Haveli Cafe Greenery Cozy Corner"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -61,7 +62,7 @@ export default function AboutStory({ isBn }: AboutStoryProps) {
               className="col-span-6 rounded-2xl overflow-hidden aspect-square shadow-md border border-border-color"
             >
               <img
-                src="/images/haveli_counter.jpg"
+                src={getAssetUrl("/images/haveli_counter.jpg")}
                 alt="Haveli Cafe Drinks Counter"
                 className="w-full h-full object-cover"
               />
@@ -76,7 +77,7 @@ export default function AboutStory({ isBn }: AboutStoryProps) {
               className="col-span-6 rounded-2xl overflow-hidden aspect-square shadow-md border border-border-color"
             >
               <img
-                src="/images/haveli_interior_shelves.jpg"
+                src={getAssetUrl("/images/haveli_interior_shelves.jpg")}
                 alt="Haveli Cafe Wooden Shelves"
                 className="w-full h-full object-cover"
               />

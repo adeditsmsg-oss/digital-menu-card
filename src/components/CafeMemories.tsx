@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Maximize2, X, Heart, MessageSquare } from "lucide-react";
+import { getAssetUrl } from "@/config/restaurant";
 
 interface CafeMemoriesProps {
   isBn: boolean;
@@ -233,7 +234,7 @@ export default function CafeMemories({ isBn }: CafeMemoriesProps) {
                 onClick={() => setSelectedImage(item)}
               >
                 <img
-                  src={item.src}
+                  src={getAssetUrl(item.src)}
                   alt={item.title}
                   className="w-full h-full object-cover transform scale-100 group-hover:scale-103 transition-transform duration-500"
                 />
@@ -286,7 +287,7 @@ export default function CafeMemories({ isBn }: CafeMemoriesProps) {
                 {/* Photo container */}
                 <div className="lg:w-7/12 aspect-[4/3] lg:aspect-auto bg-black relative max-h-[500px]">
                   <img
-                    src={selectedImage.src}
+                    src={getAssetUrl(selectedImage.src)}
                     alt={selectedImage.title}
                     className="w-full h-full object-contain lg:object-cover"
                   />

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Calendar, Users, Clock, Send, CheckCircle2 } from "lucide-react";
-import { RESTAURANT_CONFIG } from "@/config/restaurant";
+import { RESTAURANT_CONFIG, getAssetUrl } from "@/config/restaurant";
 
 interface ReservationProps {
   isBn: boolean;
@@ -66,7 +66,7 @@ export default function ReservationForm({ isBn }: ReservationProps) {
           {/* Left Column: Visual Callout */}
           <div className="lg:col-span-5 relative aspect-square lg:aspect-auto lg:h-full min-h-[350px] bg-zinc-950 overflow-hidden">
             <img
-              src="/images/haveli_shawarma_drink.jpg"
+              src={getAssetUrl("/images/haveli_shawarma_drink.jpg")}
               alt="Delicious Shawarma and Mocktail Combo"
               className="w-full h-full object-cover opacity-90"
             />

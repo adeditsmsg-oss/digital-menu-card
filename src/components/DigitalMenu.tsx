@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, Flame, Sparkles } from "lucide-react";
-import { MENU_ITEMS, MenuItem } from "@/config/restaurant";
+import { MENU_ITEMS, MenuItem, getAssetUrl } from "@/config/restaurant";
 
 interface DigitalMenuProps {
   isBn: boolean;
@@ -95,7 +95,7 @@ export default function DigitalMenu({ isBn }: DigitalMenuProps) {
                 {/* Image */}
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-200">
                   <img
-                    src={item.image}
+                    src={getAssetUrl(item.image)}
                     alt={item.name}
                     className="w-full h-full object-cover transform scale-100 group-hover:scale-103 transition-transform duration-500"
                   />

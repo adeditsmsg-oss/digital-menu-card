@@ -2,7 +2,7 @@
 
 import { motion as framerMotion } from "framer-motion";
 import { Star, Flame, Sparkles, Heart } from "lucide-react";
-import { MENU_ITEMS, MenuItem } from "@/config/restaurant";
+import { MENU_ITEMS, MenuItem, getAssetUrl } from "@/config/restaurant";
 
 interface FeaturedDishesProps {
   isBn: boolean;
@@ -79,7 +79,7 @@ export default function FeaturedDishes({ isBn }: FeaturedDishesProps) {
                 {/* Image Wrap */}
                 <div className="relative aspect-square w-full overflow-hidden bg-zinc-200">
                   <img
-                    src={dish.image}
+                    src={getAssetUrl(dish.image)}
                     alt={dish.name}
                     className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
