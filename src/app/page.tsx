@@ -1,65 +1,138 @@
-import Image from "next/image";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import TrustBar from "@/components/TrustBar";
+import FeaturedDishes from "@/components/FeaturedDishes";
+import AboutStory from "@/components/AboutStory";
+import DigitalMenu from "@/components/DigitalMenu";
+import CafeMemories from "@/components/CafeMemories";
+import ReputationManager from "@/components/ReputationManager";
+import ReservationForm from "@/components/ReservationForm";
+import FAQ from "@/components/FAQ";
+import ContactSection from "@/components/ContactSection";
+import StickyCTA from "@/components/StickyCTA";
+import Footer from "@/components/Footer";
+import { RESTAURANT_CONFIG } from "@/config/restaurant";
 
 export default function Home() {
+  const [isDark, setIsDark] = useState(true); // Default is Night Mode (Black/Yellow)
+  const [isBn, setIsBn] = useState(false);     // Default is English (70% + 30% mixed)
+
+  // Sync dark class on the HTML tag
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDark]);
+
+  // Schema Markup data
+  const restaurantSchema = {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": RESTAURANT_CONFIG.businessName,
+    "image": "https://havelicafemi.com/images/haveli_exterior.jpg",
+    "@id": "https://havelicafemi.com",
+    "url": "https://havelicafemi.com",
+    "telephone": RESTAURANT_CONFIG.phone,
+    "priceRange": "$$",
+    "menu": "https://havelicafemi.com/#menu",
+    "servesCuisine": "Indian, Chinese, Cafe, Shawarma, Continental",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Midnapore Railway Station Road, Ashok Nagar, Dharma",
+      "addressLocality": "Midnapore",
+      "postalCode": "721101",
+      "addressRegion": "West Bengal",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 22.4297376,
+      "longitude": 87.3099231
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "11:00",
+      "closes": "23:00"
+    }
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is Haveli Cafe couple and family-friendly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, absolutely! We offer a safe, cozy, and private atmosphere for couples and a comfortable, spacious environment for families."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the opening hours of Haveli Cafe?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We are open every day from 11:00 AM to 11:00 PM."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is parking available near Haveli Cafe Midnapore?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, street parking for two-wheelers and cars is available along the station road frontage."
+        }
+      }
+    ]
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      {/* Injecting Structured Schema Markups */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
+      {/* Main Single Page Container */}
+      <div className="flex flex-col min-h-screen text-foreground bg-background transition-colors duration-300">
+        <Navbar isDark={isDark} setIsDark={setIsDark} isBn={isBn} setIsBn={setIsBn} />
+        
+        <main className="flex-grow">
+          <Hero isBn={isBn} />
+          <TrustBar isBn={isBn} />
+          <FeaturedDishes isBn={isBn} />
+          <AboutStory isBn={isBn} />
+          <DigitalMenu isBn={isBn} />
+          <CafeMemories isBn={isBn} />
+          <ReputationManager isBn={isBn} />
+          <ReservationForm isBn={isBn} />
+          <FAQ isBn={isBn} />
+          <ContactSection isBn={isBn} />
+        </main>
+
+        <Footer isBn={isBn} />
+        <StickyCTA isBn={isBn} />
+      </div>
+    </>
   );
 }
