@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, Flame, Sparkles } from "lucide-react";
-import { MENU_ITEMS, MenuItem, getAssetUrl } from "@/config/restaurant";
+import { Star, Flame, Sparkles, BookOpen, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { MENU_ITEMS, MenuItem, getAssetUrl, MENU_SCANS } from "@/config/restaurant";
 
 interface DigitalMenuProps {
   isBn: boolean;
@@ -11,6 +11,8 @@ interface DigitalMenuProps {
 
 export default function DigitalMenu({ isBn }: DigitalMenuProps) {
   const [activeTab, setActiveTab] = useState("All");
+  const [isScannedMenuOpen, setIsScannedMenuOpen] = useState(false);
+  const [scanPageIndex, setScanPageIndex] = useState(0);
 
   const categories = [
     { key: "All", label: "All Items", labelBn: "সব খাবার" },
@@ -54,6 +56,18 @@ export default function DigitalMenu({ isBn }: DigitalMenuProps) {
               "Explore our complete item listings and authentic pricing directly below. Cooked fresh by our specialty hospitality team."
             )}
           </p>
+          <div className="pt-2">
+            <button
+              onClick={() => {
+                setScanPageIndex(0);
+                setIsScannedMenuOpen(true);
+              }}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent-gold hover:bg-accent-gold/90 text-black text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+            >
+              <BookOpen size={16} />
+              <span>{isBn ? "সম্পূর্ণ ফিজিক্যাল মেনু বুক দেখুন" : "View Full Physical Menu"}</span>
+            </button>
+          </div>
         </div>
 
         {/* Categories Tabs Selector */}
@@ -149,6 +163,92 @@ export default function DigitalMenu({ isBn }: DigitalMenuProps) {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* Fullscreen Scanned Menu Modal */}
+        <AnimatePresence>
+          {isScannedMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 backdrop-blur-md"
+              onClick={() => setIsScannedMenuOpen(false)}
+            >
+              {/* Close Button */}
+              <button
+                className="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer z-50 shadow-lg border border-white/10"
+                onClick={() => setIsScannedMenuOpen(false)}
+              >
+                <X size={24} />
+              </button>
+
+              {/* Navigation Arrows for Large Screens */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setScanPageIndex(prev => Math.max(0, prev - 1));
+                }}
+                disabled={scanPageIndex === 0}
+                className="absolute left-6 top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center p-4 rounded-full bg-zinc-900/80 border border-zinc-800 text-white hover:bg-zinc-800 transition-all z-40 disabled:opacity-20 disabled:cursor-not-allowed"
+              >
+                <ChevronLeft size={24} />
+              </button>
+
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setScanPageIndex(prev => Math.min(MENU_SCANS.length - 1, prev + 1));
+                }}
+                disabled={scanPageIndex === MENU_SCANS.length - 1}
+                className="absolute right-6 top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center p-4 rounded-full bg-zinc-900/80 border border-zinc-800 text-white hover:bg-zinc-800 transition-all z-40 disabled:opacity-20 disabled:cursor-not-allowed"
+              >
+                <ChevronRight size={24} />
+              </button>
+
+              {/* Main Container */}
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="relative max-w-2xl w-full flex flex-col items-center justify-center space-y-6"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Image Showcase */}
+                <div className="relative w-full aspect-[3/4] bg-zinc-950 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center">
+                  <img
+                    src={getAssetUrl(MENU_SCANS[scanPageIndex])}
+                    alt={`Haveli Cafe Physical Menu Page ${scanPageIndex + 1}`}
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </div>
+
+                {/* Pagination Controls at Bottom */}
+                <div className="flex items-center justify-between w-full max-w-xs px-2">
+                  <button
+                    onClick={() => setScanPageIndex(prev => Math.max(0, prev - 1))}
+                    disabled={scanPageIndex === 0}
+                    className="px-4 py-2 bg-zinc-900 border border-zinc-800 text-white rounded-full hover:bg-zinc-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed text-xs font-bold uppercase tracking-wider"
+                  >
+                    {isBn ? "পূর্ববর্তী" : "Prev"}
+                  </button>
+
+                  <span className="text-white text-xs sm:text-sm font-bold tracking-widest font-mono bg-zinc-900/50 px-3 py-1.5 rounded-full border border-zinc-800">
+                    {isBn ? `পৃষ্ঠা ${scanPageIndex + 1} / ${MENU_SCANS.length}` : `PAGE ${scanPageIndex + 1} OF ${MENU_SCANS.length}`}
+                  </span>
+
+                  <button
+                    onClick={() => setScanPageIndex(prev => Math.min(MENU_SCANS.length - 1, prev + 1))}
+                    disabled={scanPageIndex === MENU_SCANS.length - 1}
+                    className="px-4 py-2 bg-zinc-900 border border-zinc-800 text-white rounded-full hover:bg-zinc-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed text-xs font-bold uppercase tracking-wider"
+                  >
+                    {isBn ? "পরবর্তী" : "Next"}
+                  </button>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
       </div>
     </section>

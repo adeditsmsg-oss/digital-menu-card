@@ -10,6 +10,7 @@
   --border-color: #e4e4e7;
   --glass-bg: rgba(255, 255, 255, 0.8);
   --glass-border: rgba(228, 228, 231, 0.6);
+  --font-outfit: 'Outfit';
   --font-sans: var(--font-outfit), system-ui, sans-serif;
 }
 

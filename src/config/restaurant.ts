@@ -330,7 +330,7 @@ export const MENU_ITEMS: MenuItem[] = [
     descriptionBn: "৪ পিস গরম ফুলকো লুচি সাথে মশলাদার ও সুস্বাদু আলুর দম।",
     price: 60,
     category: "Bengali Special",
-    image: "/images/haveli_chicken_manchurian.jpg",
+    image: "/images/luchi_alur_dum.png",
     isPopular: true
   },
   {
@@ -362,7 +362,7 @@ export const MENU_ITEMS: MenuItem[] = [
     descriptionBn: "মাটির ভাঁড়ে জমানো মিষ্টি ও ক্রিমি ঐতিহ্যবাহী মিষ্টি দই।",
     price: 30,
     category: "Bengali Special",
-    image: "/images/haveli_milkshake.jpg"
+    image: "/images/mishti_doi.png"
   },
 
   // CHINESE (RICE & NOODLES)
@@ -417,7 +417,7 @@ export const MENU_ITEMS: MenuItem[] = [
     descriptionBn: "সুগন্ধি বাসমতি চাল, নরম চিকেন, সেদ্ধ ডিম এবং কলকাতার বিখ্যাত আলু দিয়ে তৈরি দমে রান্না বিরিয়ানি।",
     price: 160,
     category: "Biryani",
-    image: "/images/haveli_chicken_manchurian.jpg",
+    image: "/images/kolkata_biryani.png",
     isPopular: true,
     isBestSeller: true
   },
@@ -429,7 +429,7 @@ export const MENU_ITEMS: MenuItem[] = [
     descriptionBn: "নরম মাটন, ডিম এবং মশলাদার আলু দিয়ে তৈরি কলকাতার ট্র্যাডিশনাল মাটন বিরিয়ানি।",
     price: 220,
     category: "Biryani",
-    image: "/images/haveli_chicken_manchurian.jpg",
+    image: "/images/kolkata_biryani.png",
     isHighestRated: true
   },
 
@@ -575,3 +575,10 @@ export const getAssetUrl = (path: string): string => {
   const isProd = process.env.NODE_ENV === "production";
   return isProd ? `/haveli-cafe-website${path}` : path;
 };
+
+export const MENU_SCANS = [
+  "/images/menu_scan_1.jpg",
+  "/images/menu_scan_2.png",
+  "/images/menu_scan_3.png",
+  "/images/menu_scan_4.png"
+];
