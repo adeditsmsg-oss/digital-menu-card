@@ -217,6 +217,7 @@ export default function DigitalMenu({ isBn }: DigitalMenuProps) {
                 {/* Image Showcase */}
                 <div className="relative w-full aspect-[3/4] bg-zinc-950 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center">
                   <img
+                    key={scanPageIndex}
                     src={getAssetUrl(MENU_SCANS[scanPageIndex])}
                     alt={`Haveli Cafe Physical Menu Page ${scanPageIndex + 1}`}
                     className="max-h-full max-w-full object-contain"
