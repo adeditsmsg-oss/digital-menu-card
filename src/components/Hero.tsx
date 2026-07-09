@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+
 import { Coffee, ChevronRight, Phone } from "lucide-react";
 import { RESTAURANT_CONFIG, getAssetUrl } from "@/config/restaurant";
 
@@ -29,23 +29,17 @@ export default function Hero({ isBn }: HeroProps) {
           {/* Left Text Column */}
           <div className="lg:col-span-7 text-left space-y-6 sm:space-y-8">
             {/* Tagline */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+            <div
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-gold/10 border border-accent-gold/25 text-accent-gold text-xs sm:text-sm font-bold tracking-wide uppercase font-sans"
             >
               <Coffee size={14} className="animate-bounce" />
               <span>
                 {isBn ? "মেদিনীপুরের প্রিয় খাবারের ঠেক" : "Medinipur's Ultimate Food & Adda Destination"}
               </span>
-            </motion.div>
+            </div>
 
             {/* Main Header */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+            <h1
               className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-foreground"
             >
               {isBn ? (
@@ -60,13 +54,10 @@ export default function Hero({ isBn }: HeroProps) {
                   <span className="text-accent-gold font-sans">Haveli Cafe</span>
                 </>
               )}
-            </motion.h1>
+            </h1>
 
             {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+            <p
               className="text-base sm:text-lg text-foreground/80 max-w-2xl font-normal leading-relaxed"
             >
               {isBn ? (
@@ -74,13 +65,10 @@ export default function Hero({ isBn }: HeroProps) {
               ) : (
                 "Located right near Midnapore Railway Station, Haveli Cafe brings you the perfect blend of cozy rustic ambiance, mouth-watering Shawarma wraps, crispy drums of heaven, and rich creamy cold coffee. It's not just a cafe, it's where college memories are made and families gather."
               )}
-            </motion.p>
+            </p>
 
             {/* Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+            <div
               className="flex flex-col sm:flex-row gap-4 pt-2"
             >
               <a
@@ -97,15 +85,12 @@ export default function Hero({ isBn }: HeroProps) {
                 <Phone size={16} />
                 <span>{isBn ? "টেবিল বুকিং" : "Reserve Table"}</span>
               </a>
-            </motion.div>
+            </div>
           </div>
 
           {/* Right Visual Image Column */}
           <div className="lg:col-span-5 relative mt-6 lg:mt-0 flex justify-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
+            <div
               className="relative w-[290px] h-[360px] sm:w-[350px] sm:h-[450px] rounded-[2rem] overflow-hidden border-4 border-accent-gold shadow-2xl group"
             >
               {/* Main Image (Mural photo) */}
@@ -124,13 +109,10 @@ export default function Hero({ isBn }: HeroProps) {
                   {isBn ? "আমাদের সিগনেচার ওয়াল মিউরাল" : "Our Iconic Camera Wall Mural"}
                 </h3>
               </div>
-            </motion.div>
+            </div>
 
             {/* Floating Visual Badge Card (The milkshake/dessert) */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+            <div
               className="absolute -bottom-8 -right-4 sm:-right-8 bg-card-bg border border-border-color p-3 rounded-2xl shadow-xl flex items-center gap-3.5 max-w-[200px] sm:max-w-[220px]"
             >
               <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0">
@@ -151,20 +133,17 @@ export default function Hero({ isBn }: HeroProps) {
                   {isBn ? "মাত্র ₹১৩০" : "Only ₹130"}
                 </p>
               </div>
-            </motion.div>
+            </div>
 
             {/* Floating Badge Left */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+            <div
               className="absolute -top-6 -left-4 sm:-left-8 bg-card-bg border border-border-color px-4 py-2.5 rounded-full shadow-lg flex items-center gap-2"
             >
               <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
               <span className="text-xs font-extrabold tracking-wider text-foreground uppercase">
                 {isBn ? "খোলা আছে (১১টা - ১১টা)" : "Open Now (11 AM - 11 PM)"}
               </span>
-            </motion.div>
+            </div>
           </div>
 
         </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
 import { 
   Star, Flame, Sparkles, X, Plus, Minus, Search, 
   ShoppingCart, MessageSquare, Compass, AlertCircle
@@ -303,22 +303,16 @@ export default function DigitalMenu({ isBn }: DigitalMenuProps) {
         )}
 
         {/* Menu Items Grid */}
-        <motion.div
-          layout
+        <div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
         >
-          <AnimatePresence mode="popLayout">
+          
             {filteredItems.map((item) => {
               const isVeg = isItemVeg(item);
               const qty = getCartQuantity(item.id);
               
               return (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3 }}
+                <div
                   key={item.id}
                   className="group relative flex flex-col bg-card-bg border border-border-color rounded-3xl overflow-hidden hover:shadow-xl hover:border-accent-gold/20 transition-all duration-300"
                 >
@@ -421,19 +415,17 @@ export default function DigitalMenu({ isBn }: DigitalMenuProps) {
                       )}
                     </div>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
-          </AnimatePresence>
-        </motion.div>
+          
+        </div>
 
       </div>
 
       {/* Floating Cart Button */}
       {getCartTotalItems() > 0 && (
-        <motion.button
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
+        <button
           onClick={() => setIsCartOpen(true)}
           className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-6 py-4 rounded-full bg-accent-gold text-black hover:bg-accent-gold/90 shadow-2xl transition-all duration-300 font-extrabold hover:scale-105"
         >
@@ -441,28 +433,21 @@ export default function DigitalMenu({ isBn }: DigitalMenuProps) {
           <span className="text-xs uppercase tracking-widest">
             {isBn ? `কার্ট (${getCartTotalItems()}) • ₹${getCartTotal()}` : `Cart (${getCartTotalItems()}) • ₹${getCartTotal()}`}
           </span>
-        </motion.button>
+        </button>
       )}
 
       {/* Slide-out Cart Drawer */}
-      <AnimatePresence>
+      
         {isCartOpen && (
           <>
             {/* Backdrop overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+            <div
               onClick={() => setIsCartOpen(false)}
               className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
             />
 
             {/* Cart Panel Drawer */}
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
+            <div
               className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-md bg-card-bg border-l border-border-color shadow-2xl flex flex-col justify-between"
             >
               {/* Header */}
@@ -569,10 +554,10 @@ export default function DigitalMenu({ isBn }: DigitalMenuProps) {
                   </p>
                 </div>
               )}
-            </motion.div>
+            </div>
           </>
         )}
-      </AnimatePresence>
+      
     </section>
   );
 }
