@@ -12,11 +12,18 @@ interface HeroProps {
 export default function Hero({ isBn }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-background">
+      {/* Cinematic Background Image with Gradient Overlay */}
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center transition-all duration-500 opacity-20 dark:opacity-30 pointer-events-none"
+        style={{ backgroundImage: `url(${getAssetUrl('/images/haveli_hero_bg.png')})` }}
+      />
+      <div className="absolute inset-0 z-0 backdrop-blur-[1px] bg-gradient-to-b from-background/30 via-background/60 to-background pointer-events-none" />
+
       {/* Decorative background glows */}
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-accent-gold/10 blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-80 h-80 rounded-full bg-accent-gold/15 blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Left Text Column */}

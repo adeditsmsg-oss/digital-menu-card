@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Moon, Sun, Globe, Menu, X, PhoneCall } from "lucide-react";
+import { Moon, Sun, Globe, Menu, X, ArrowRight } from "lucide-react";
 import { RESTAURANT_CONFIG } from "@/config/restaurant";
 
 interface NavbarProps {
@@ -15,12 +15,7 @@ export default function Navbar({ isDark, setIsDark, isBn, setIsBn }: NavbarProps
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "Story", nameBn: "গল্প", href: "#story" },
-    { name: "Menu", nameBn: "মেনু", href: "#menu" },
-    { name: "Reputation", nameBn: "রিভিউ", href: "#reputation" },
-    { name: "Memories", nameBn: "স্মৃতি", href: "#memories" },
-    { name: "FAQ", nameBn: "জিজ্ঞাসাবাদ", href: "#faq" },
-    { name: "Contact", nameBn: "যোগাযোগ", href: "#contact" },
+    { name: "Full Menu", nameBn: "মেনু তালিকা", href: "#menu" },
   ];
 
   return (
@@ -77,12 +72,13 @@ export default function Navbar({ isDark, setIsDark, isBn, setIsBn }: NavbarProps
               {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
-            {/* Reserve CTA */}
+            {/* View Menu CTA */}
             <a
-              href="#reservation"
-              className="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-accent-gold hover:bg-accent-gold-hover text-black transition-all duration-300 shadow-md hover:shadow-accent-gold/20"
+              href="#menu"
+              className="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-accent-gold hover:bg-accent-gold-hover text-black transition-all duration-300 shadow-md hover:shadow-accent-gold/20 flex items-center gap-1.5"
             >
-              {isBn ? "টেবিল বুকিং" : "Book Table"}
+              <span>{isBn ? "মেনু দেখুন" : "View Menu"}</span>
+              <ArrowRight size={14} />
             </a>
           </div>
 
@@ -130,12 +126,11 @@ export default function Navbar({ isDark, setIsDark, isBn, setIsBn }: NavbarProps
             ))}
             <div className="pt-4 pb-2 px-4">
               <a
-                href="#reservation"
+                href="#menu"
                 onClick={() => setIsOpen(false)}
                 className="w-full inline-flex justify-center items-center px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider bg-accent-gold hover:bg-accent-gold-hover text-black transition-all duration-300 shadow-md"
               >
-                <PhoneCall size={16} className="mr-2" />
-                {isBn ? "টেবিল বুক করুন" : "Book A Table"}
+                <span>{isBn ? "মেনু দেখুন" : "View Menu"}</span>
               </a>
             </div>
           </div>

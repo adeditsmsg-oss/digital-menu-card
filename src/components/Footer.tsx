@@ -77,28 +77,13 @@ export default function Footer({ isBn }: FooterProps) {
             </h4>
             <ul className="text-xs sm:text-sm space-y-2">
               <li>
-                <a href="#story" className="hover:text-accent-gold transition-colors">
-                  {isBn ? "আমাদের গল্প" : "Our Story"}
+                <a href="#" className="hover:text-accent-gold transition-colors">
+                  {isBn ? "হোম" : "Home"}
                 </a>
               </li>
               <li>
                 <a href="#menu" className="hover:text-accent-gold transition-colors">
                   {isBn ? "মেনুর তালিকা" : "Digital Menu"}
-                </a>
-              </li>
-              <li>
-                <a href="#reputation" className="hover:text-accent-gold transition-colors">
-                  {isBn ? "রেটিং ও রিভিউ" : "Google Reviews"}
-                </a>
-              </li>
-              <li>
-                <a href="#memories" className="hover:text-accent-gold transition-colors">
-                  {isBn ? "গ্যালারি ও স্মৃতি" : "Cafe Gallery"}
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-accent-gold transition-colors">
-                  {isBn ? "জিজ্ঞাসিত প্রশ্ন" : "FAQs Info"}
                 </a>
               </li>
             </ul>

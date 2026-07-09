@@ -2,28 +2,28 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #18181b;
-  --accent-gold: #E5A93B;
-  --accent-gold-hover: #c98e26;
-  --accent-gold-light: #fef3c7;
-  --card-bg: #f8f8f8;
-  --border-color: #e4e4e7;
-  --glass-bg: rgba(255, 255, 255, 0.8);
-  --glass-border: rgba(228, 228, 231, 0.6);
+  --foreground: #101012;
+  --accent-gold: #FFB800;
+  --accent-gold-hover: #E09F00;
+  --accent-gold-light: #FFF8E5;
+  --card-bg: #fafafa;
+  --border-color: #eaeaea;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(230, 230, 230, 0.6);
   --font-outfit: 'Outfit';
   --font-sans: var(--font-outfit), system-ui, sans-serif;
 }
 
 html.dark {
-  --background: #0a0a09;
-  --foreground: #f4f4f5;
-  --accent-gold: #E5A93B;
-  --accent-gold-hover: #f59e0b;
-  --accent-gold-light: #30240d;
-  --card-bg: #151412;
-  --border-color: #27272a;
-  --glass-bg: rgba(10, 10, 9, 0.8);
-  --glass-border: rgba(39, 39, 42, 0.6);
+  --background: #080808;
+  --foreground: #f5f5f7;
+  --accent-gold: #FFC61A;
+  --accent-gold-hover: #E0A800;
+  --accent-gold-light: #2A2000;
+  --card-bg: #121212;
+  --border-color: #1f1f1f;
+  --glass-bg: rgba(8, 8, 8, 0.85);
+  --glass-border: rgba(31, 31, 31, 0.6);
 }
 
 @theme inline {
