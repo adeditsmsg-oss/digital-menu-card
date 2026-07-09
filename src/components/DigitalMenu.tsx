@@ -185,6 +185,19 @@ export default function DigitalMenu({ isBn }: DigitalMenuProps) {
           </p>
         </div>
 
+        {/* External Full Menu CTA */}
+        <div className="flex justify-center mb-10">
+          <a
+            href="https://adeditsmsg-oss.github.io/haveli-cafe-menu/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-accent-gold hover:bg-accent-gold/90 text-black font-extrabold text-sm sm:text-base tracking-wide uppercase shadow-lg shadow-accent-gold/20 hover:shadow-xl hover:scale-105 transition-all duration-300"
+          >
+            <span>📖</span>
+            <span>{isBn ? "আমাদের সম্পূর্ণ মেনু দেখুন" : "VIEW OUR FULL MENU"}</span>
+          </a>
+        </div>
+
         {/* Search and Veg Toggles */}
         <div className="max-w-4xl mx-auto mb-10 flex flex-col md:flex-row gap-4 items-center justify-between">
           {/* Search bar */}
